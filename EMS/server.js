@@ -2,15 +2,11 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var config = require('./config/config');
 var express = require('./config/express');
+var mongooseConf = require('./config/mongooseConf');
 
-var mongoose = require('mongoose');                     // mongoose for mongodb
+//var mongoose = require('mongoose');                     // mongoose for mongodb
+var db = mongooseConf();
 var app = express();
-
-// configuration =================
-
-//mongoose.connect('mongodb://node:nodeuser@mongo.onmodulus.net:27017/uwO3mypu');     // connect to mongoDB database on modulus.io
-
-// listen (start app with node server.js) ======================================
 
 app.listen(config.port);
 
