@@ -17,7 +17,10 @@ module.exports = function(){
 	
 	app.use(methodOverride());
 
+	require('../app/routes/index.server.routes.js')(app);
 	require('../app/routes/employees.server.routes.js')(app);
 
+	
+	
 	return app;
 }

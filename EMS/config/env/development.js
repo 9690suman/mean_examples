@@ -1,5 +1,7 @@
 var port = 8080;
+var db_url = ""
 
 module.exports={
-	port:port
+	port:port,
+	db:db_url
 }
