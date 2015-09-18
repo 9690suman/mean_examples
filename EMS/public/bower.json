@@ -1,0 +1,21 @@
+{
+  "name": "EMS_PUBLIC",
+  "version": "0.0.0",
+  "authors": [
+    "9690suman <sarnendu.mukherjee@gmail.com>"
+  ],
+  "description": "Public folder for EMS",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.4.5",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5"
+  }
+}
