@@ -8,8 +8,8 @@
 <title>EMS</title>
 
 <!-- Bootstrap -->
-<link href="app/bower_components/bootstrap/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="app/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/ems.css" rel="stylesheet">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,7 +22,7 @@
 </head>
 <body data-ng-app="ems">
 
-	<nav class="navbar navbar-default">
+	<nav ng-hide="$state.includes('login')" class="navbar navbar-default">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -81,6 +81,8 @@
 	<script src="app/app.js"></script>
 	<script src="app/modules/addEmployee.js"></script>
 	<script src="app/controllers/addEmployee.js"></script>
+	<script src="app/modules/login.js"></script>
+	<script src="app/controllers/login.js"></script>
 
 
 </body>
