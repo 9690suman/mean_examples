@@ -6,7 +6,7 @@
 
 	function addEmployeeCtrl() {
 		var vm = this;
-		vm.hello = "this is hello on vm!!"
+		vm.hello = "this is hello on vm!!";
 	}
 
 })();

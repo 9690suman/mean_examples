@@ -7,4 +7,4 @@ module.exports = function(){
 	require('../app/models/employee.server.model');
 	console.log('inside mongoose config');
 	return db;
-}
+};

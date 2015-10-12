@@ -5,3 +5,7 @@
 .top-offset-20 { margin-top:20%; }
 .top-offset-25 { margin-top:25%; }
 .top-offset-30 { margin-top:30%; }
+
+body{
+	background-color: snow;
+}

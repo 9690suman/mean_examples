@@ -16,7 +16,7 @@ exports.list = function(req,res){
 	var employee3 = {};
 	employee1.firstName = 'suman';
 	employee2.firstName = 'saru';
-	employee3.firstName = 'raja'
+	employee3.firstName = 'raja';
 
 	employees.push(employee1);
 	employees.push(employee2);
