@@ -4,7 +4,6 @@ var config = require('./config/config');
 var express = require('./config/express');
 var mongooseConf = require('./config/mongooseConf');
 
-//var mongoose = require('mongoose');                     // mongoose for mongodb
 var db = mongooseConf();
 var app = express();
 
