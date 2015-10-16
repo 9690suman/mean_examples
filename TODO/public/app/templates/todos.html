@@ -1,0 +1,38 @@
+<div class="row">
+	<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+		<div class="text-center">
+			<div class="page-header">
+				<h1>
+					What do you want to do today?
+					<!-- <small>Subtext for header</small> -->
+				</h1>
+			</div>
+			<div class="alert alert-info">
+				<form name="todo" ng-submit="todos.addTodo()">
+					<div class="form-group">
+						<input type="text" class="form-control" id="todoId" name="todo" ng-model="todos.todoText"
+							placeholder="Eg: Fill timesheet">
+
+					</div>
+				</form>
+			</div>
+		</div>
+		<div>
+			<ul class="list-group">
+				<li data-ng-repeat="todo in todos.todos | orderBy :'isDone'" class="list-group-item " data-ng-class="{'list-group-item-success':todo.isDone,'list-group-item-warning':!todo.isDone}">
+					<div class="row">
+						<div class="col-xs-1">
+							<i class="fa fa-2x" data-ng-click="todos.markItDone(todo)" data-ng-class="{'fa-square-o':!todo.isDone,'fa-check-square-o':todo.isDone}"></i>
+						</div>
+						<div class="col-xs-10">
+							<span class="vertical-align-middle" data-ng-bind="todo.todoText"></span>
+						</div>
+						<div class="col-xs-1">
+							<i class="fa fa-trash-o fa-2x pull-right" data-ng-click="todos.removeTodo(todo.todoId)"></i>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

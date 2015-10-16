@@ -21,8 +21,10 @@ module.exports = function(){
 	/*express configuration ends*/
 	
 	/*Add all your routes below*/
-	//require('../app/routes/index.server.routes.js')(app);
+	require('../app/routes/todo.server.routes.js')(app);
 	
+	//This should be the last cause it will return index.html for all request which doesnot match other urls!
+	require('../app/routes/index.server.routes.js')(app);
 	
 	/* Return the Express app for using in the server.js */
 	

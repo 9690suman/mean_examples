@@ -1,0 +1,12 @@
+.margin-bottom-10 {
+    margin-bottom: 10px !important;
+}
+
+.relative-top-negetive-5{
+    position: relative;
+    top: -5px;
+}
+
+.vertical-align-middle {
+    vertical-align: middle;
+}
