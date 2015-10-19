@@ -1,3 +1,5 @@
+var TodoMongoose = require('mongoose').model('Todo');
+
 var todos = [];
 
 var todo1 = {};
@@ -9,7 +11,7 @@ todo1.createUserId = 1;
 todo1.updateDate = null;
 
 var todo2 = {};
-todo2.todoId = new Date().getTime();
+todo2.todoId = new Date().getTime()+1;
 todo2.todoText = "Get Milk!";
 todo2.isDone = true;
 todo2.createDate = new Date();
@@ -25,9 +27,17 @@ exports.list = function(req,res){
 };
 
 exports.add = function(req,res){
-	var todo = req.body;
+	/*var todo = req.body;
 	todos.push(todo);
-	res.send('Todo saved successfully');
+	res.send('Todo saved successfully');*/
+	var todo = new TodoMongoose(req.body);
+	todo.save(function(err){
+		if(err){
+			return next(err);
+		}else{
+			res.json(todo);
+		}
+	});
 };
 
 exports.read = function(req,res){

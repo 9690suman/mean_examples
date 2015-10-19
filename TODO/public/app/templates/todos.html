@@ -8,10 +8,10 @@
 				</h1>
 			</div>
 			<div class="alert alert-info">
-				<form name="todo" ng-submit="todos.addTodo()">
-					<div class="form-group">
+				<form name="todo" ng-submit="todo.$valid && todos.addTodo()" novalidate="novalidate">
+					<div class="form-group" ng-class="{'has-error':todo.todo.$dirty && todo.todo.$invalid}">
 						<input type="text" class="form-control" id="todoId" name="todo" ng-model="todos.todoText"
-							placeholder="Eg: Fill timesheet">
+							placeholder="Eg: Fill timesheet" data-ng-required="true">
 
 					</div>
 				</form>
