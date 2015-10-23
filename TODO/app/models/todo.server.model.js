@@ -4,10 +4,10 @@ var Schema = mongoose.Schema;
 var TodoSchema = new Schema({
 	todoId : String,
 	todoText : String,
-	isDone : String,
-	createDate : String,
+	isDone : Boolean,
+	createDate : Date,
 	createUserId : String,
-	updateDate : String
+	updateDate : Date
 });
 
 mongoose.model('Todo',TodoSchema);

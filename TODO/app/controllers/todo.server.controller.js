@@ -1,35 +1,24 @@
 var TodoMongoose = require('mongoose').model('Todo');
 
-var todos = [];
-
-var todo1 = {};
-todo1.todoId = new Date().getTime();
-todo1.todoText = "Get Egg!";
-todo1.isDone = false;
-todo1.createDate = new Date();
-todo1.createUserId = 1;
-todo1.updateDate = null;
-
-var todo2 = {};
-todo2.todoId = new Date().getTime()+1;
-todo2.todoText = "Get Milk!";
-todo2.isDone = true;
-todo2.createDate = new Date();
-todo2.createUserId = 1;
-todo2.updateDate = null;
-
-
-todos.push(todo1);
-todos.push(todo2);
-
-exports.list = function(req,res){
-	res.send(todos);
+module.exports = {
+		list : list,
+		add : add,
+		read : read,
+		update : update,
+		remove : remove,
+		getById : getById
 };
 
-exports.add = function(req,res){
-	/*var todo = req.body;
-	todos.push(todo);
-	res.send('Todo saved successfully');*/
+function list(req,res){
+	TodoMongoose.find({},/*{_id:false},*/function(err,todos){
+		if(err){
+			return next(err);
+		}else{
+			res.json(todos);
+		}
+	});
+};
+function add(req,res){
 	var todo = new TodoMongoose(req.body);
 	todo.save(function(err){
 		if(err){
@@ -39,27 +28,39 @@ exports.add = function(req,res){
 		}
 	});
 };
+function read(req,res){
+	console.log('Inside Read');
 
-exports.read = function(req,res){
-	
+	res.json('Read Successfull!');
 };
-
-exports.update = function(req,res){
-	var todoId = req.params.todoId;
-	var todo=req.body;
-	for(var i=0;i<todos.length;i++ ){
-		if(todos[i] && todos[i].todoId==todoId){
-			todos[i] = todo;
+function update(req,res){
+	var id = req.todo._id;
+	var todo = req.body;
+	todo.updateDate = new Date();
+	TodoMongoose.findByIdAndUpdate(id,todo,function(err,todo){
+		if(err){
+			return next(err);
+		}else{
+			res.json('Todo Updated Successful!');
 		}
-	};
+	});
 };
-
-exports.remove = function(req,res){
-	var todoId = req.params.todoId;
-	for(var i=0;i<todos.length;i++ ){
-		if(todos[i] && todos[i].todoId==todoId){
-			todos.splice(i,1);
+function remove(req,res){
+	req.todo.remove(function(err){
+		if(err){
+			return next(err);
+		}else{
+			res.send('Todo Removed Successfully!');
 		}
-	};
-	res.send('Todo Removed Successfully!');
+	})
+};
+function getById(req, res, next, param) {
+	TodoMongoose.findOne({todoId:param},function(err,todo){
+		if(err){
+			return next(err);
+		}else{
+			req.todo = todo;
+			next();
+		}
+	})
 };
