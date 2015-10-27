@@ -7,6 +7,7 @@ module.exports = function(){
 	
 	//Load all the Models here.
 	require('../app/models/todo.server.model');
+	require('../app/models/user.server.model');
 	
 	return db;
 };

@@ -5,6 +5,8 @@ var methodOverride = require('method-override');
 
 var config = require('./config');
 
+var passportConfig = require('./passportConfig');
+
 module.exports = function(){
 	var app = express();
 	
@@ -23,11 +25,13 @@ module.exports = function(){
 	/*Add all your routes below*/
 	require('../app/routes/todo.server.routes.js')(app);
 	
-	//This should be the last cause it will return index.html for all request which doesnot match other urls!
+	/*This should be the last cause it will return index.html for all request which doesnot match other urls!*/
 	require('../app/routes/index.server.routes.js')(app);
 	
-	/* Return the Express app for using in the server.js */
+	/*Load Passport Configuration*/
+	passportConfig(app);
 	
+	/* Return the Express app for using in the server.js */
 	app.listen(config.port);
 	console.log(process.env.NODE_ENV  + ' server running at http://localhost:' + config.port);
 	return app;

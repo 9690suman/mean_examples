@@ -10,7 +10,9 @@
 <!-- Bootstrap -->
 <link href="app/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/todo.css" rel="stylesheet">
+<link href="css/login.css" rel="stylesheet">
 <link rel="stylesheet" href="app/bower_components/components-font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="app/bower_components/animate.css/animate.css">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -20,18 +22,10 @@
 </head>
 <body ng-app="todo">
 
-	<nav class="navbar navbar-default">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#/todos">
-	        <img alt="Brand" src="favicon.ico">
-	      </a>
-	      <p class="navbar-text">Todos</p>
-	    </div>
-	  </div>
-	</nav>
+	<div ng-include="'app/templates/header.html'"></div>
 	<div class="container-fluid">
 		<div ui-view=""></div>
+		<div ng-include="'app/templates/alert.html'"></div>
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="app/bower_components/jquery/dist/jquery.min.js"></script>
@@ -40,10 +34,16 @@
 	<script src="app/bower_components/angular/angular.js"></script>
 	<script src="app/bower_components/angular-resource/angular-resource.min.js"></script>
 	<script src="app/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="app/bower_components/satellizer/satellizer.js"></script>
 	
 	<script src="app/todoApp.js"></script>
+	<script src="app/controllers/header.js"></script>
+	<script src="app/services/alert.js"></script>
+	<script src="app/directives/validateEquals.js"></script>
 	<script src="app/controllers/todo.js"></script>
 	<script src="app/services/todo.js"></script>
+	<script src="app/controllers/login.js"></script>
+	<script src="app/controllers/register.js"></script>
 	
 </body>
 </html>

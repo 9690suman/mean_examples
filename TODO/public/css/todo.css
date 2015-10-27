@@ -1,12 +1,28 @@
-.margin-bottom-10 {
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+/* .margin-bottom-10 {
     margin-bottom: 10px !important;
 }
 
 .relative-top-negetive-5{
     position: relative;
     top: -5px;
-}
+} */
 
 .vertical-align-middle {
     vertical-align: middle;
+}
+
+.main-alert {
+	position:absolute;
+	top: 70px;
+	left: 5px;
+	right: 5px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+.alert-hidden {
+    visibility: hidden;
 }
