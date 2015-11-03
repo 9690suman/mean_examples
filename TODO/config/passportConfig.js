@@ -1,6 +1,7 @@
 var passport = require('passport');
 var session = require('express-session');
 var localStrategy = require('./localStrategy.js');
+var jwtStrategy = require('./jwtStrategy.js')
 var createSendToken = require('./jwt.js');
 
 module.exports= function(app){
@@ -10,6 +11,7 @@ module.exports= function(app){
 	app.use(passport.session()); // persistent login sessions
 
 	passport.serializeUser(function (user, done) {
+		console.log('inside passport.serializeUser');
 		/*done(null, user.id);*/
 		done(null, user);
 	});
@@ -22,11 +24,14 @@ module.exports= function(app){
 	});*/
 	
 	passport.deserializeUser(function(user, done) {
+		console.log('inside passport.deserializeUser');
 		done(null, user);
 	});
 
 	passport.use('local-register', localStrategy.register);
 	passport.use('local-login', localStrategy.login);
+	
+	passport.use(jwtStrategy);
 
 	app.post('/auth/signup', passport.authenticate('local-register'), function (req, res) {
 		//emailVerification.send(req.user.email);
@@ -38,4 +43,6 @@ module.exports= function(app){
 	app.post('/auth/login', passport.authenticate('local-login'), function (req, res) {
 		createSendToken(req.user, res);
 	});
+	
+	return passport;
 }

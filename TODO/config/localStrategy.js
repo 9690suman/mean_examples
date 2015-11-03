@@ -2,8 +2,8 @@ var User = require('../app/models/user.server.model.js');
 var LocalStrategy = require('passport-local').Strategy;
 
 var strategyOptions = {
-		usernameField: 'email',
-		session:false
+		usernameField: 'email'
+		//session:false
 };
 
 exports.login = new LocalStrategy(strategyOptions, function (email, password, done) {
@@ -19,7 +19,7 @@ exports.login = new LocalStrategy(strategyOptions, function (email, password, do
 			message: 'Wrong email/password'
 		});
 
-		user.comparePasswords(password, function (err, isMatch) {
+		user.comparePassword(password, function (err, isMatch) {
 			if (err) return done(err);
 
 			if (!isMatch) return done(null, false, {
@@ -37,15 +37,10 @@ exports.register = new LocalStrategy(strategyOptions, function (email, password,
 			email: email
 	};
 
-	console.log("inside exports.register");
-
 	User.findOne(searchUser, function (err, user) {
-		console.log("inside findOne callback");
-		console.log(user);
 		if (err) return done(err);
 
 		if (user) {
-			console.log("inside if (user)!!");
 			return done(null, false, {
 				message: 'email already exists'
 			});

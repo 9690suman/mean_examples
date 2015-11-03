@@ -3,7 +3,7 @@ var bcrypt = require('bcrypt-nodejs');
 
 var userSchema = new mongoose.Schema({
 	email: { type: String, unique: true, lowercase: true },
-	password: { type: String, select: false },
+	password: { type: String/*, select: false*/ },
 	displayName: String,
 	picture: String,
 	facebook: String,
@@ -20,15 +20,11 @@ var userSchema = new mongoose.Schema({
 
 userSchema.pre('save', function(next) {
 	var user = this;
-	console.log(user);
 	if (!user.isModified('password')) {
-		console.log("inside is modified");
 		return next();
 	}
 	bcrypt.genSalt(10, function(err, salt) {
-		console.log('inside genSalt');
 		bcrypt.hash(user.password, salt,null, function(err, hash) {
-			console.log('inside hash');
 			user.password = hash;
 			next();
 		});

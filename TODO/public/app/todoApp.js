@@ -21,6 +21,9 @@
 			url:"/register",
 			controller: "registerCtrl",
 			controllerAs : "register"
+		}).state("logout", {
+			controller: "logoutCtrl",
+			controllerAs : "logout"
 		});
 	}]);
 	

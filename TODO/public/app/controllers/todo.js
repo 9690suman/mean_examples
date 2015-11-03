@@ -43,7 +43,6 @@
 		function markItDone(todo){
 			todo.isDone = true;
 			todosService.update({'todoId':todo.todoId},todo,function(data){
-				console.log(data);
 				init();
 			});
 		};

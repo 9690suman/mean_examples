@@ -10,6 +10,7 @@ module.exports = {
 };
 
 function list(req,res){
+	var user = req.user;
 	TodoMongoose.find({},/*{_id:false},*/function(err,todos){
 		if(err){
 			return next(err);
@@ -29,8 +30,6 @@ function add(req,res){
 	});
 };
 function read(req,res){
-	console.log('Inside Read');
-
 	res.json('Read Successfull!');
 };
 function update(req,res){

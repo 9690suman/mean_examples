@@ -23,9 +23,9 @@
 					<li><a href="#">Report</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li data-ui-sref-active="active"><a data-ui-sref="login" href="#">Login</a></li>
-					<li data-ui-sref-active="active"><a data-ui-sref="register" href="#">Register</a></li>
-					<li><a href="#">Logout</a></li>
+					<li data-ng-hide="isAuthenticated()" data-ui-sref-active="active"><a data-ui-sref="login" href="#">Login</a></li>
+					<li data-ng-hide="isAuthenticated()" data-ui-sref-active="active"><a data-ui-sref="register" href="#">Register</a></li>
+					<li data-ng-show="isAuthenticated()"><a data-ui-sref="logout" href="#">Logout</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->

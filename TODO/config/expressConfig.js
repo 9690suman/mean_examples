@@ -22,14 +22,14 @@ module.exports = function(){
 	app.use(methodOverride());
 	/*express configuration ends*/
 	
+	/*Load Passport Configuration*/
+	var passport = passportConfig(app);
+	
 	/*Add all your routes below*/
-	require('../app/routes/todo.server.routes.js')(app);
+	require('../app/routes/todo.server.routes.js')(app,passport);
 	
 	/*This should be the last cause it will return index.html for all request which doesnot match other urls!*/
 	require('../app/routes/index.server.routes.js')(app);
-	
-	/*Load Passport Configuration*/
-	passportConfig(app);
 	
 	/* Return the Express app for using in the server.js */
 	app.listen(config.port);
