@@ -3,7 +3,6 @@
 
 	function loginCtrl($state,$auth,alert){
 		var vm = this;
-		alert('success','Login Page!','hi!!!!!!!!!!!!!!!!!!!!!!!!!');
 
 		/*declare all vm variables here*/
 
@@ -27,7 +26,7 @@
 			.catch(function(err) {
 				// Handle errors here, such as displaying a notification
 				// for invalid email and/or password.
-				alert('warning', 'Invalid email and/or password', err.message);
+				alert('warning', 'Login Unsuccessful!', err.data.message);
 			});
 		};
 

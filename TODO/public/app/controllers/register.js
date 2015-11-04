@@ -3,7 +3,6 @@
 
 	function registerCtrl($state,$auth,alert){
 		var vm = this;
-		alert('success','Register Page!','hi!!!!!!!!!!!!!!!!!!!!!!!!!');
 
 		/*declare all vm variables here*/
 
@@ -25,7 +24,7 @@
 				$state.go('todos');
 			})
 			.catch(function (err) {
-				alert('warning', 'Unable to create account :(', err.message);
+				alert('warning', 'Unable to create account :(', err.data.message);
 			});
 		}
 

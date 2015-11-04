@@ -3,7 +3,6 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var strategyOptions = {
 		usernameField: 'email'
-		//session:false
 };
 
 exports.login = new LocalStrategy(strategyOptions, function (email, password, done) {
@@ -16,14 +15,14 @@ exports.login = new LocalStrategy(strategyOptions, function (email, password, do
 		if (err) return done(err);
 
 		if (!user) return done(null, false, {
-			message: 'Wrong email/password'
+			message: 'Email not registered!!'
 		});
 
 		user.comparePassword(password, function (err, isMatch) {
 			if (err) return done(err);
 
 			if (!isMatch) return done(null, false, {
-				message: 'Wrong email/password'
+				message: 'Wrong Password!!'
 			});
 
 			return done(null, user);
@@ -42,7 +41,7 @@ exports.register = new LocalStrategy(strategyOptions, function (email, password,
 
 		if (user) {
 			return done(null, false, {
-				message: 'email already exists'
+				message: 'Email already exists!!'
 			});
 		}
 
