@@ -25,7 +25,7 @@
 			addTodoReqParam.todoText = vm.todoText;
 			addTodoReqParam.isDone = false;
 			addTodoReqParam.createDate = new Date();
-			addTodoReqParam.createUserId = 1;
+			//addTodoReqParam.createUserId = 1;
 			addTodoReqParam.updateDate = null;
 			
 			vm.todoText = "";

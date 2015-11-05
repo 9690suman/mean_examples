@@ -10,8 +10,9 @@ module.exports = {
 };
 
 function list(req,res){
-	var user = req.user;
-	TodoMongoose.find({},/*{_id:false},*/function(err,todos){
+	var userId = req.user._id;
+	console.log(userId);
+	TodoMongoose.find({createUserId:userId},function(err,todos){
 		if(err){
 			return next(err);
 		}else{
@@ -20,6 +21,9 @@ function list(req,res){
 	});
 };
 function add(req,res){
+	var userId = req.user._id;
+	console.log(userId);
+	req.body.createUserId = userId;
 	var todo = new TodoMongoose(req.body);
 	todo.save(function(err){
 		if(err){
